@@ -1,0 +1,3 @@
+Welcome to interpreter by zzh!
+Type "quit" to exit
+Begin!
