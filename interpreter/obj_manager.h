@@ -9,6 +9,9 @@ enum var_ts//var type's enum
 	Int,
 	Float,
 	String,
+	Bool,
+	func,
+	Class,
 	Error
 };
 
@@ -29,6 +32,15 @@ public:
 			value = (void*)(new float);
 			break;
 		case String:
+			value = (void*)(new string);
+			break;
+		case Bool:
+			value = (void*)(new bool);
+			break;
+		case func:
+			value = (void*)(new string);
+			break;
+		case Class:
 			value = (void*)(new string);
 			break;
 		default:

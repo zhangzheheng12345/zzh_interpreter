@@ -43,7 +43,7 @@ void mono_check(const string& cmd)
 	{
 		arg += cmd[t];
 	}
-	if (strcmp(cmd_name.c_str(), "get"))
+	if (!strcmp(cmd_name.c_str(), "get"))
 	{
 		run_sys.print_var(arg);
 	}
@@ -52,7 +52,6 @@ void mono_check(const string& cmd)
 //run the shell
 bool shell_run()
 {
-	runner run;//init runnner
 	if(!get_message())//get messages func
 		return false;
 	string input = "";
@@ -63,6 +62,7 @@ bool shell_run()
 		cout << ">";
 		getline(cin, input);//get input
 		mono_check(input);
+		run_sys.add_sentence(input);
 	}
 	return true;
 }

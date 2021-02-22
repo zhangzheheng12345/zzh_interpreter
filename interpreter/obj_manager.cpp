@@ -2,6 +2,8 @@
 #include <string>
 #include <map>
 
+#include <iostream>//only for debug
+
 void obj_sys::add_var(const string& varname,var_ts type)//add a new var
 {
 	switch (type)//different var_types
