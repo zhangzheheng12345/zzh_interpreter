@@ -61,15 +61,15 @@ void runner::obj_adding_var()
 	string varname,str_var_type;
 	var_ts vartype;
 	int i = 4;
-	for (i; sen_to_run[i] != ':'; i++)
+	for (i; sen_to_run[i] != ':'; i++)//get the varname
 		varname += sen_to_run[i];
 	i++;
-	for (i; is_alpha(sen_to_run[i]) || sen_to_run[i] == '_'; i++)
+	for (i; is_alpha(sen_to_run[i]) || sen_to_run[i] == '_'; i++)//get the type
 		str_var_type += sen_to_run[i];
-	if (!strcmp(str_var_type.c_str(), "int"))
+	if (!strcmp(str_var_type.c_str(), "int"))//type:str to enum
 	{
 		vartype = Int;
-	}//more types...
+	}
 	else if (!strcmp(str_var_type.c_str(), "float"))
 	{
 		vartype = Float;
@@ -84,14 +84,46 @@ void runner::obj_adding_var()
 	}
 	else
 	{
-
+		//check classes
+		//or output error
+		
 	}
 	vas.vars.add_var(varname, vartype);
 }
 
 void runner::obj_adding_const()
 {
-
+	string varname,str_var_type;
+	var_ts vartype;
+	int i = 4;
+	for (i; sen_to_run[i] != ':'; i++)//get the varname
+		varname += sen_to_run[i];
+	i++;
+	for (i; is_alpha(sen_to_run[i]) || sen_to_run[i] == '_'; i++)//get the type
+		str_var_type += sen_to_run[i];
+	if (!strcmp(str_var_type.c_str(), "int"))//type:str to enum
+	{
+		vartype = Int;
+	}
+	else if (!strcmp(str_var_type.c_str(), "float"))
+	{
+		vartype = Float;
+	}
+	else if (!strcmp(str_var_type.c_str(), "string"))
+	{
+		vartype = String;
+	}
+	else if (!strcmp(str_var_type.c_str(), "bool"))
+	{
+		vartype = Bool;
+	}
+	else
+	{
+		//check classes
+		//or output error
+		
+	}
+	consts.add_var(varname,vartype);
 }
 
 void runner::obj_adding_static()
