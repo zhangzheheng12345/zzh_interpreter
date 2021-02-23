@@ -70,6 +70,18 @@ void runner::obj_adding_var()
 	{
 		vartype = Int;
 	}//more types...
+	else if (!strcmp(str_var_type.c_str(), "float"))
+	{
+		vartype = Float;
+	}
+	else if (!strcmp(str_var_type.c_str(), "string"))
+	{
+		vartype = String;
+	}
+	else if (!strcmp(str_var_type.c_str(), "bool"))
+	{
+		vartype = Bool;
+	}
 	else
 	{
 
