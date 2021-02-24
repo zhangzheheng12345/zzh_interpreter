@@ -82,6 +82,14 @@ void runner::obj_adding_var()
 	{
 		vartype = Bool;
 	}
+	else if(!strcmp(str_var_type.c_str(),"func"))
+	{
+		vartype = func;
+	}
+	else if(!strcmp(str_var_type.c_str(),"class"))
+	{
+		vartype = Class;
+	}
 	else
 	{
 		//check classes
@@ -116,6 +124,14 @@ void runner::obj_adding_const()
 	else if (!strcmp(str_var_type.c_str(), "bool"))
 	{
 		vartype = Bool;
+	}
+	else if(!strcmp(str_var_type.c_str(),"func"))
+	{
+		vartype = func;
+	}
+	else if(!strcmp(str_var_type.c_str(),"class"))
+	{
+		vartype = Class;
 	}
 	else
 	{
@@ -152,6 +168,14 @@ void runner::obj_adding_static()
 	{
 		vartype = Bool;
 	}
+	else if(!strcmp(str_var_type.c_str(),"func"))
+	{
+		vartype = func;
+	}
+	else if(!strcmp(str_var_type.c_str(),"class"))
+	{
+		vartype = Class;
+	}
 	else
 	{
 		//check classes
@@ -187,6 +211,14 @@ void runner::obj_adding_global()
 	{
 		vartype = Bool;
 	}
+	else if(!strcmp(str_var_type.c_str(),"func"))
+	{
+		vartype = func;
+	}
+	else if(!strcmp(str_var_type.c_str(),"class"))
+	{
+		vartype = Class;
+	}
 	else
 	{
 		//check classes
@@ -213,7 +245,9 @@ void runner::module_parce()
 
 var runner::obj_get(const string& name)
 {
-	return vas.vars.get_var(name);
+	var value;
+	value = vas.vars.get_var(name);
+	return value;
 }
 
 void runner::first_letter_check()
