@@ -204,10 +204,10 @@ var runner::obj_get(const string& name)
 {
 	var value;
 	value = vas.vars.get_var(name);
-	if (value == error)
+	if (value == Error)
 	{
 		value = vas.statics.get_var(name);
-		if (value == error)
+		if (value == Error)
 		{
 			value = consts.get_var(name);
 			//if value == error again?? ->...
