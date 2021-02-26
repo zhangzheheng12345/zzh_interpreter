@@ -206,7 +206,12 @@ var runner::obj_get(const string& name)
 	value = vas.vars.get_var(name);
 	if (value == error)
 	{
-		value = vas.static.get_var(name);
+		value = vas.statics.get_var(name);
+		if (value == error)
+		{
+			value = consts.get_var(name);
+			//if value == error again?? ->...
+		}
 	}
 	return value;
 }
