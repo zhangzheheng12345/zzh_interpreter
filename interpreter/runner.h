@@ -36,6 +36,6 @@ private:
 	var obj_get(const string& name);
 	void first_letter_check();
 	string sen_to_run;
-	obj_sys consts, globals, funcs, classes;
+	obj_sys consts;
 	mono_objs vas;
 };
