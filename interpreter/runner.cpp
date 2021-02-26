@@ -56,6 +56,14 @@ void runner::print_var(const string& varname)
 	}
 }
 
+string get_var_name(int index)//pull out funcs here&under
+{
+}
+
+var_ts get_var_type(int index)
+{
+}
+
 void runner::obj_adding_var()//TODO:maybe need to pull the func of changing str_type to enum_type
 {
 	string varname,str_var_type;
