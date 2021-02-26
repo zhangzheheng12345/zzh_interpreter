@@ -230,7 +230,7 @@ void runner::first_letter_check()
 		{
 			obj_adding_const();
 		}
-		else id (!strcmp(key_word.c_str(),"static"))
+		else if (!strcmp(key_word.c_str(),"static"))
 		{
 			obj_adding_static();
 		}
