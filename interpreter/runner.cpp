@@ -56,7 +56,7 @@ void runner::print_var(const string& varname)
 	}
 }
 
-void runner::obj_adding_var()
+void runner::obj_adding_var()//TODO:maybe need to pull the func of changing str_type to enum_type
 {
 	string varname,str_var_type;
 	var_ts vartype;
@@ -204,6 +204,10 @@ var runner::obj_get(const string& name)
 {
 	var value;
 	value = vas.vars.get_var(name);
+	if (value == error)
+	{
+		value = vas.static.get_var(name);
+	}
 	return value;
 }
 
@@ -233,6 +237,11 @@ void runner::first_letter_check()
 		else if (!strcmp(key_word.c_str(),"static"))
 		{
 			obj_adding_static();
+		}
+		else
+		{
+			//other key words checking
+			// or output error
 		}
 	}
 	else
