@@ -26,6 +26,8 @@ public:
 	void add_sentence(const string& sen);
 	void print_var(const string& varname);
 private:
+	string get_var_name(int index);
+	var_ts get_var_type(int index);
 	void obj_adding_var();
 	void obj_adding_const();
 	void obj_adding_static();
