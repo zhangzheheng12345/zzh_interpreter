@@ -12,6 +12,7 @@ enum var_ts//var type's enum
 	Bool,
 	func,
 	Class,
+	Obj,
 	Error
 };
 
