@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -56,146 +57,106 @@ void runner::print_var(const string& varname)
 	}
 }
 
-string get_var_name(int index)//pull out funcs here&under
+string runner::get_var_name(int index)//pull out funcs here&under
 {
+	string varname = "";
+	for (index; sen_to_run[index] != ':'; index++)//get the varname
+		varname += sen_to_run[index];
 }
 
-var_ts get_var_type(int index)
+var_ts runner::get_var_type(int index)
 {
+	string str_var_type = "";
+	var_ts vartype;
+	void* varvalue;
+	for (index; is_alpha(sen_to_run[index]) || sen_to_run[index] == '_'; index++)//get the type
+		str_var_type += sen_to_run[index];
+	if (!strcmp(str_var_type.c_str(), "int"))//type:str to enum
+	{
+		vartype = Int;
+		varvalue = (void*)new int(get_var_begin_value<int>(index));
+	}
+	else if (!strcmp(str_var_type.c_str(), "float"))
+	{
+		vartype = Float;
+		varvalue = (void*)new float(get_var_begin_value<float>(index));
+	}
+	else if (!strcmp(str_var_type.c_str(), "string"))
+	{
+		vartype = String;
+		varvalue = (void*)new string(get_var_begin_value<string>(index));//support string later //str to str?? error or not
+	}
+	else if (!strcmp(str_var_type.c_str(), "bool"))
+	{
+		vartype = Bool;
+		varvalue = (void*)new bool(get_var_begin_value<bool>(index));
+	}
+	else if(!strcmp(str_var_type.c_str(),"func"))
+	{
+		vartype = func;//support func later
+	}
+	else if(!strcmp(str_var_type.c_str(),"class"))
+	{
+		vartype = Class;//support class later
+	}
+	else
+	{
+		//check classes
+		//or output error
+		
+	}
+	var a(vartype);
+	a.value = varvalue;
+	return a;
 }
 
-void* get_var_begin_value(int index)
+template<typename Type>
+Type runner::get_var_begin_value(int index)
 {
-	
+	string num;
+	if (sen_to_run[index] == ';')
+		return NULL;
+	if (!is_num(sen_to_run[index+2])
+	{
+	    index += 3;
+	}
+	else
+	{
+		index += 2;
+	}
+	for (index;!sen_to_run[index] == ';';index++)//use the expression-parse later
+	    num += sen_to_run[index];
+	stringstream ss(num);
+	Type value;
+	ss >> value;
+	return value;
 }
 
 void runner::obj_adding_var()//TODO:maybe need to pull the func of changing str_type to enum_type
 {
-	string varname,str_var_type;
-	var_ts vartype;
 	int i = 4;
-	for (i; sen_to_run[i] != ':'; i++)//get the varname
-		varname += sen_to_run[i];
+	string varname = get_var_name(i);
 	i++;
-	for (i; is_alpha(sen_to_run[i]) || sen_to_run[i] == '_'; i++)//get the type
-		str_var_type += sen_to_run[i];
-	if (!strcmp(str_var_type.c_str(), "int"))//type:str to enum
-	{
-		vartype = Int;
-	}
-	else if (!strcmp(str_var_type.c_str(), "float"))
-	{
-		vartype = Float;
-	}
-	else if (!strcmp(str_var_type.c_str(), "string"))
-	{
-		vartype = String;
-	}
-	else if (!strcmp(str_var_type.c_str(), "bool"))
-	{
-		vartype = Bool;
-	}
-	else if(!strcmp(str_var_type.c_str(),"func"))
-	{
-		vartype = func;
-	}
-	else if(!strcmp(str_var_type.c_str(),"class"))
-	{
-		vartype = Class;
-	}
-	else
-	{
-		//check classes
-		//or output error
-		
-	}
-	vas.vars.add_var(varname, vartype);
+	var var_a = get_var_type(i);
+	vas.vars.add_var(varname, var_a.type,var_a.value);
 }
 
 void runner::obj_adding_const()
 {
-	string varname,str_var_type;
-	var_ts vartype;
 	int i = 6;
-	for (i; sen_to_run[i] != ':'; i++)//get the varname
-		varname += sen_to_run[i];
+	string varname = get_var_name(i);
 	i++;
-	for (i; is_alpha(sen_to_run[i]) || sen_to_run[i] == '_'; i++)//get the type
-		str_var_type += sen_to_run[i];
-	if (!strcmp(str_var_type.c_str(), "int"))//type:str to enum
-	{
-		vartype = Int;
-	}
-	else if (!strcmp(str_var_type.c_str(), "float"))
-	{
-		vartype = Float;
-	}
-	else if (!strcmp(str_var_type.c_str(), "string"))
-	{
-		vartype = String;
-	}
-	else if (!strcmp(str_var_type.c_str(), "bool"))
-	{
-		vartype = Bool;
-	}
-	else if(!strcmp(str_var_type.c_str(),"func"))
-	{
-		vartype = func;
-	}
-	else if(!strcmp(str_var_type.c_str(),"class"))
-	{
-		vartype = Class;
-	}
-	else
-	{
-		//check classes
-		//or output error
-		
-	}
-	consts.add_var(varname,vartype);
+	var var_a = get_var_type(i);
+	consts.add_var(varname,var_a.type,var_a.value);
 }
 
 void runner::obj_adding_static()
 {
-	ring varname,str_var_type;
-	var_ts vartype;
 	int i = 7;
-	for (i; sen_to_run[i] != ':'; i++)//get the varname
-		varname += sen_to_run[i];
+	string varname = get_var_name(i);
 	i++;
-	for (i; is_alpha(sen_to_run[i]) || sen_to_run[i] == '_'; i++)//get the type
-		str_var_type += sen_to_run[i];
-	if (!strcmp(str_var_type.c_str(), "int"))//type:str to enum
-	{
-		vartype = Int;
-	}
-	else if (!strcmp(str_var_type.c_str(), "float"))
-	{
-		vartype = Float;
-	}
-	else if (!strcmp(str_var_type.c_str(), "string"))
-	{
-		vartype = String;
-	}
-	else if (!strcmp(str_var_type.c_str(), "bool"))
-	{
-		vartype = Bool;
-	}
-	else if(!strcmp(str_var_type.c_str(),"func"))
-	{
-		vartype = func;
-	}
-	else if(!strcmp(str_var_type.c_str(),"class"))
-	{
-		vartype = Class;
-	}
-	else
-	{
-		//check classes
-		//or output error
-		
-	}
-	vas.statics.add_var(varname,vartype);
+	var var_a = get_var_type(i);
+	vas.statics.add_var(varname,var_a.type,var_a.value);
 }		
 
 void runner::obj_parce()
