@@ -1,6 +1,6 @@
 # zzh_interpreter
 
-###a interpreter for a new lang
+### A interpreter for a new lang
 
 This lang will be an OO lang, and it will be like C++,Python,JavaScript and many other langs.
 This interpreter is programmed by cpp
@@ -21,3 +21,4 @@ will support:
 * import
 * output & input
 * better notes
+
