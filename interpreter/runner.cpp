@@ -64,6 +64,11 @@ var_ts get_var_type(int index)
 {
 }
 
+void* get_var_begin_value(int index)
+{
+	
+}
+
 void runner::obj_adding_var()//TODO:maybe need to pull the func of changing str_type to enum_type
 {
 	string varname,str_var_type;
