@@ -4,22 +4,10 @@
 
 #include <iostream>//only for debug
 
-void obj_sys::add_var(const string& varname,var_ts type)//add a new var
+void obj_sys::add_var(const string& varname,var_ts type,void* begin_value = NULL)//add a new var
 {
-	switch (type)//different var_types
-	{
-	case Int:
-		obj_box.insert(pair<string, var*>(varname, new var(Int)));
-		break;
-	case Float:
-		obj_box.insert(pair<string,var*>(varname, new var(Float)));
-		break;
-	case String:
-		obj_box.insert(pair<string, var*>(varname, new var(String)));
-		break;
-	default:
-		break;
-	}
+	obj_box.insert(pair<str,var*>(varname,new var(type))); //do some thing to check error before
+	obj_box.set_var(varname,begin_value);
 }
 
 var obj_sys::get_var(const string& varname)//get the whole obj
