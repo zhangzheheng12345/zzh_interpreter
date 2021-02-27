@@ -54,7 +54,7 @@ public:
 class obj_sys
 {
 public:
-	void add_var(const string& varname,var_ts type);
+	void add_var(const string& varname,var_ts type，void* begin_value = NULL);
 	var get_var(const string& varname);
 	bool set_var(const string& varname,void* value);
 private:
