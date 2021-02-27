@@ -16,6 +16,22 @@ enum var_ts//var type's enum
 	Error
 };
 
+class mono_objs
+{
+public:
+	obj_sys vars, statics;
+};
+
+class func_box
+{
+public:
+	string name;
+	int arg_num;
+	var_ts* arg_type_list;
+	int code_num;
+	string* codes;
+};
+
 class var//put a var in here
 {
 public:
