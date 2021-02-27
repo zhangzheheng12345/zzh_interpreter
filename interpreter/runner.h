@@ -28,6 +28,7 @@ public:
 private:
 	string get_var_name(int index);
 	var_ts get_var_type(int index);
+	void* get_var_begib_value(int index);
 	void obj_adding_var();
 	void obj_adding_const();
 	void obj_adding_static();
