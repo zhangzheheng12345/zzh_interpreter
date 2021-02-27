@@ -4,22 +4,6 @@
 
 using namespace std;
 
-class mono_objs
-{
-public:
-	obj_sys vars, statics;
-};
-
-class func_box
-{
-public:
-	string name;
-	int arg_num;
-	var_ts* arg_type_list;
-};
-
-
-
 class runner
 {
 public:
